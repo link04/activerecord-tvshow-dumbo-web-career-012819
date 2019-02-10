@@ -8,6 +8,14 @@ class Show < ActiveRecord::Base
     self.find_by(rating: self.highest_rating)
   end
   
+  def self.lowest_rating
+    self.minimum(:rating)
+  end
+  
+  def self.most_popular_show
+    self.find_by(rating: self.lowest_rating)
+  end
+  
 end
 
 # lowest_rating: returns the lowest value in the ratings column.
